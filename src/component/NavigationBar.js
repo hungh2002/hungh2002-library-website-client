@@ -2,13 +2,17 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useSelector } from 'react-redux';
 
 import logo from "./../resources/svg/logo.svg";
+import ThemeToggleButton from "./ThemeToggleButton";
 
 const NavigationBar = () => {
   
+  const theme = useSelector((state) => state.theme.value);
+  
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
+    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary" bg={theme.color} data-bs-theme={theme.color}>
       <Container fluid>
         <LinkContainer to="/"><Navbar.Brand ><img
               alt="logo"
@@ -25,6 +29,9 @@ const NavigationBar = () => {
             navbarScroll
           >
             <LinkContainer to="/"><Nav.Link >Home</Nav.Link></LinkContainer>
+            
+            <ThemeToggleButton />
+            
             <LinkContainer to="/hello"><Nav.Link >Link</Nav.Link></LinkContainer>
           </Nav>
         </Navbar.Collapse>
