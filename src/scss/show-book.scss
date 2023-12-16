@@ -1,0 +1,11 @@
+.show-book {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  .items {
+    gap: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+  }
+}

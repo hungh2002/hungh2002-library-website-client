@@ -1,4 +1,29 @@
 .App {
-  height: 100%;
   width: 100%;
+  text-align: center;
+}
+
+.grid-container {
+  width: 100%;
+  display: grid;
+
+  grid-template-columns: repeat(12, 1fr);
+  
+  .App-header {
+    grid-column: 1 / 13;
+    grid-row: 1;
+  }
+  
+  .content {
+    text-align: center;
+    grid-column: 1 / 13;
+    grid-row: 2;
+  }
+  .footer {
+    grid-column: 1 / 13;
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+  }
 }

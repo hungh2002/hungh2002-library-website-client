@@ -1,3 +1,5 @@
+import * as typeDefault from "./const";
+
 export const THEME = {
   dark: {
     color: 'dark',

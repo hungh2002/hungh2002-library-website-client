@@ -6,13 +6,14 @@ import { useSelector } from 'react-redux';
 
 import logo from "./../resources/svg/logo.svg";
 import ThemeToggleButton from "./ThemeToggleButton";
+import './../scss/NavigationBar.scss';
 
 const NavigationBar = () => {
   
   const theme = useSelector((state) => state.theme.value);
   
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary" bg={theme.color} data-bs-theme={theme.color}>
+    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary nav" bg={theme.color} data-bs-theme={theme.color}>
       <Container fluid>
         <LinkContainer to="/"><Navbar.Brand ><img
               alt="logo"
@@ -22,6 +23,9 @@ const NavigationBar = () => {
               className="d-inline-block align-top"
             />{' '}
             React Bootstrap</Navbar.Brand></LinkContainer>
+            
+            <ThemeToggleButton />
+            
         <Navbar.Toggle aria-controls="basic-navbar-nav navbarScroll responsive-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav navbarScroll responsive-navbar-nav">
           <Nav className="me-auto my-2 my-lg-0"
@@ -29,10 +33,8 @@ const NavigationBar = () => {
             navbarScroll
           >
             <LinkContainer to="/"><Nav.Link >Home</Nav.Link></LinkContainer>
-            
-            <ThemeToggleButton />
-            
-            <LinkContainer to="/hello"><Nav.Link >Link</Nav.Link></LinkContainer>
+            <LinkContainer to="/add-new-book"><Nav.Link >Link</Nav.Link></LinkContainer>
+            <LinkContainer to="/edit-website-information"><Nav.Link >Setting</Nav.Link></LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Container>

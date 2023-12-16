@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 import './../scss/ThemeToggleButton.scss';
-import { DARK, LIGHT } from "./../redux/type";
 import { dark, light } from "./../redux/reducer/themeSlice";
+import { THEME } from "./../redux/type";
 
 const ThemeToggleButton = () => {
   
@@ -10,7 +10,7 @@ const ThemeToggleButton = () => {
   const dispatch = useDispatch();
   
   const changeTheme = () => {
-    if (theme === DARK) {
+    if (theme === THEME.dark) {
       dispatch(light());
     } else {
       dispatch(dark());
@@ -19,9 +19,9 @@ const ThemeToggleButton = () => {
   
   return (
     <div id="ThemeToggleButton">
-    <h4>Theme:</h4>
+    Theme:
       <input type="checkbox" className="checkbox" id="checkbox" onClick={changeTheme} />
-  <label for="checkbox" className="checkbox-label">
+  <label htmlFor="checkbox" className="checkbox-label">
     <i className="fas fa-moon"></i>
     <i className="fas fa-sun"></i>
     <span className="ball"></span>
