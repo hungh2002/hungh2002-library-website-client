@@ -11,7 +11,7 @@ function App() {
   const theme = useSelector((state) => state.theme.value);
   
   return (
-    <div className="App grid-container" style={theme.css}>
+    <div className="App flex-container" style={theme.css}>
       <header className="App-header">
         <NavigationBar />
       </header>

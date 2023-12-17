@@ -1,11 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
-const baseURL = 'http://157.7.214.16:8000/library/api';
+const baseURL = 'http://localhost:8080/api';
 
 export const axiosGet = (url) => {
-  axios({
+  return axios({
     baseURL: baseURL,
-    url: url
+    method: 'get',
+    url: url,
   });
 };
 
@@ -13,6 +14,7 @@ export const axiosPost = (url, data) => {
   axios({
     baseURL: baseURL,
     url: url,
-    data: data
+    method: 'post',
+    data: data,
   });
 };
