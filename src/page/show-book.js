@@ -1,29 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 import './../scss/show-book.scss';
-import { axiosGet } from './../service/axios-api';
+import { fetchBook } from './../redux/reducer/bookSlice';
 
 const ShowBook = () => {
-  const [data, setData] = useState([]);
+
+  const book = useSelector((state) => state.book.value);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getData();
+    dispatch(fetchBook());
   });
 
-  const getData = async () => {
-    try {
-      const response = await axiosGet('/book');
-      return setData(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   const mapData = () => {
-    return data.map((element) => {
+    return book.map((element) => {
       return (
-        <Link to={'article-detail'} key={element.bookId}>
+        <Link to={`article-detail/${element.bookId}`} key={element.bookId}>
           <div>{element.thumbnail}</div>
           <div>{element.title}</div>
         </Link>

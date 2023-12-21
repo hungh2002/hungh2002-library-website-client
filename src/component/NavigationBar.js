@@ -33,7 +33,8 @@ const NavigationBar = () => {
             navbarScroll
           >
             <LinkContainer to="/"><Nav.Link >Home</Nav.Link></LinkContainer>
-            <LinkContainer to="/add-new-book"><Nav.Link >Link</Nav.Link></LinkContainer>
+            <LinkContainer to="/add-new-book"><Nav.Link >Add book</Nav.Link></LinkContainer>
+            <LinkContainer to="/add-new-chapter"><Nav.Link >Add chapter</Nav.Link></LinkContainer>
             <LinkContainer to="/edit-website-information"><Nav.Link >Setting</Nav.Link></LinkContainer>
           </Nav>
         </Navbar.Collapse>

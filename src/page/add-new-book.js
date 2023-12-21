@@ -11,8 +11,7 @@ const AddNewBook = () => {
     const formData = new FormData(form);
     formData.append('thumbnail', thumbnail);
 
-    const post = await axiosPost('/book', formData);
-    return post;
+    return await axiosPost('/book', formData);
   };
 
   return (

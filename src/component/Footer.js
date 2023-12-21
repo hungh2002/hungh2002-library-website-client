@@ -1,11 +1,32 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+
+import { fetchSocialNetwork } from './../redux/reducer/socialNetworkSlice';
+
 const Footer = () => {
+  
+  const socialNetworkInformation = useSelector((state) => state.socialNetwork.value);
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(fetchSocialNetwork());
+  });
+  
+  const mapData = () => {
+    return socialNetworkInformation.map((element) => {
+      return (
+        <a herf={element.link} key={element.socialNetwork} target="_blank" rel="noreferrer">
+          <div>{element.socialNetwork}</div>
+          <div>{element.link}</div>
+        </a>
+      );
+    });
+  };
+  
   return (
     <div className="rounded-social-buttons">
+      {mapData()}
                     <a className="social-button facebook" href="https://www.facebook.com/" target="_blank" rel="noreferrer"><i className="fab fa-facebook-f fa-fw"></i></a>
-                    <a className="social-button twitter" href="https://www.twitter.com/" target="_blank" rel="noreferrer"><i className="fab fa-twitter fa-fw"></i></a>
-                    <a className="social-button linkedin" href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><i className="fab fa-linkedin fa-fw"></i></a>
-                    <a className="social-button youtube" href="https://www.youtube.com/" target="_blank" rel="noreferrer"><i className="fab fa-youtube fa-fw"></i></a>
-                    <a className="social-button instagram" href="https://www.instagram.com/" target="_blank" rel="noreferrer"><i className="fab fa-instagram fa-fw"></i></a>
                 </div>
   );
 }

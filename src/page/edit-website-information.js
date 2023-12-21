@@ -1,45 +1,57 @@
-import { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { changeSocialNetwork } from "./../redux/reducer/socialNetworkSlice";
+import { useState, useEffect } from 'react';
+
+import { fetchSocialNetwork } from './../redux/reducer/socialNetworkSlice';
+import { axiosPost } from './../service/axios-api';
 
 const EditWebsiteInformation = () => {
   
-  const [data, setData] = useState({});
-  
-  const socialNetwork = useSelector((state) => state.socialNetwork.value);
+  const socialNetworkInformation = useSelector((state) => state.socialNetwork.value);
   const dispatch = useDispatch();
   
-  const handleSubmit = (e) => {
+  const [data, setData] = useState('facebook');
+  
+  useEffect(() => {
+    dispatch(fetchSocialNetwork());
+  });
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     const form = e.target;
     const formData = new FormData(form);
     
-    const key = Object.keys(socialNetwork);
-    const map = key.forEach((element) => {
-        data[`${element}`] = formData.get(element);
-    });
-    
-    dispatch(changeSocialNetwork(data));
+    const object = {
+      socialNetwork: formData.get('socialNetwork'),
+      link: formData.get(formData.get('socialNetwork'))
+    };
+    return await axiosPost('/social-network-information', object);
   };
   
-  const form = () => {
-
-    const map = Object.entries(socialNetwork).map((element) => {
+  const mapData = () => {
+    return socialNetworkInformation.map((element) => {
       return (
-          <label key={element[0]}> 
-            {element[0]}:<input type="text" name={element[0]} defaultValue={element[1]} />
+        <label key={element.socialNetwork}> 
+            {element.socialNetwork}:<input type="text" name={element.socialNetwork} defaultValue={element.link} />
           </label>
       );
     });
-    
-    return map;
   };
   
   return (
     <div className="edit-website-information">
       <form onSubmit={handleSubmit}>
-        {form()}
+        <label>
+          <select 
+          name="socialNetwork" 
+          onChange={e => setData(e.target.value)} 
+          value={data}>
+            <option value="facebook">facebook</option>
+            <option value="x">x</option>
+          </select>:
+          <input type="text" name={data}/>
+        </label>
+        {mapData()}
         <br />
         <button type="submit">Submit form</button>
       </form>
