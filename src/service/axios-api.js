@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const baseURL = 'http://157.7.214.16:8000/library-0.0.1-SNAPSHOT/api';
+// const baseURL = 'http://157.7.214.16:8000/library-0.0.1-SNAPSHOT/api';
+const baseURL = 'http://localhost:8080/api';
 
 export const axiosGet = (url) => {
   return axios({
@@ -15,7 +16,7 @@ export const axiosGetWithParams = (url, params) => {
     baseURL: baseURL,
     method: 'get',
     url: url,
-    params: params
+    params: params,
   });
 };
 
@@ -34,6 +35,6 @@ export const axiosPostWithParams = (url, data, params) => {
     url: url,
     method: 'post',
     data: data,
-    params: params
+    params: params,
   });
 };

@@ -1,14 +1,13 @@
-import { createAsyncThunk,createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { axiosGetWithParams } from './../../service/axios-api';
-
 
 export const fetchChapter = createAsyncThunk(
   'chapter/fetchChapter',
   async (bookId) => {
-    const response = await axiosGetWithParams('/chapter', bookId);
-    return response.data
+    const response = await axiosGetWithParams('/chapter', { bookId: bookId });
+    return response.data;
   }
-)
+);
 
 export const chapterSlice = createSlice({
   name: 'chapter',
@@ -17,14 +16,13 @@ export const chapterSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder
-      .addCase(fetchChapter.fulfilled, (state, action) => {
-        state.value = action.payload
-      })
+    builder.addCase(fetchChapter.fulfilled, (state, action) => {
+      state.value = action.payload;
+    });
   },
-})
+});
 
 // Action creators are generated for each case reducer function
-export const {  } = chapterSlice.actions
+export const {} = chapterSlice.actions;
 
-export default chapterSlice.reducer
+export default chapterSlice.reducer;
