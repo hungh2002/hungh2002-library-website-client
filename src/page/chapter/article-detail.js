@@ -1,14 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 
-import './../scss/article-detail.scss';
-import { fetchChapter } from './../redux/reducer/chapterSlice';
-import { axiosGetWithParams } from '../service/axios-api';
+import './../../scss/article-detail.scss';
+import { fetchChapter } from './../../redux/reducer/chapterSlice';
 
 const ArticleDetail = () => {
-  const [data, setData] = useState([]);
-  const [chapterIndex, setChapterIndex] = useState('');
   const { bookId } = useParams();
   const chapter = useSelector((state) => state.chapter.value);
   const dispatch = useDispatch();
@@ -17,17 +14,10 @@ const ArticleDetail = () => {
     dispatch(fetchChapter(bookId));
   });
 
-  const displayConditions = (chapter) => {
-    if (chapter != chapterIndex) {
-      setChapterIndex(chapter);
-      return <div>{chapter}</div>;
-    }
-  };
-
   const mapData = () => {
     return chapter.map((element) => {
       return (
-        <Link to={``} key={element.chapterId}>
+        <Link to={``} key={element.chapterIndexId}>
           <div>{element.title}</div>
         </Link>
       );

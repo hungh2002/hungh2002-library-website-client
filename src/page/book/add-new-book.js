@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { axiosPost } from './../service/axios-api';
-import './../scss/add-new-book.scss';
+import { axiosPost } from './../../service/axios-api';
+import './../../scss/add-new-book.scss';
 
 const AddNewBook = () => {
   const [thumbnail, setThumbnail] = useState({});

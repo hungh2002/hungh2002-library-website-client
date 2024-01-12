@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 
-import { fetchBook } from './../redux/reducer/bookSlice';
-import { axiosPost } from './../service/axios-api';
-import './../scss/add-new-chapter.scss';
+import { fetchBook } from './../../redux/reducer/bookSlice';
+import { axiosPost } from './../../service/axios-api';
+import './../../scss/add-new-chapter.scss';
 
 const AddNewChapter = () => {
   const book = useSelector((state) => state.book.value);
@@ -24,7 +24,7 @@ const AddNewChapter = () => {
 
     formData.append('files', images);
 
-    return await axiosPost('/chapter', object, id);
+    // return await axiosPost('/chapter', object, id);
   };
 
   const mapData = () => {
