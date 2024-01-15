@@ -3,30 +3,29 @@ import { axiosGetWithParams } from './../../service/axios-api';
 
 export const fetchChapterDetail = createAsyncThunk(
   'chapterDetail/fetchChapterDetail',
-  async (bookId) => {
+  async (params) => {
     const response = await axiosGetWithParams(
-        '/chapter/chapter',
-        { bookId: bookId },
-        data
-        );
+      '/chapter/chapter',
+      params,
+    );
     return response.data;
   }
 );
 
-export const chapterSlice = createSlice({
-  name: 'chapter',
+export const chapterDetailSlice = createSlice({
+  name: 'chapterDetail',
   initialState: {
     value: [],
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchChapter.fulfilled, (state, action) => {
+    builder.addCase(fetchChapterDetail.fulfilled, (state, action) => {
       state.value = action.payload;
     });
   },
 });
 
 // Action creators are generated for each case reducer function
-export const {} = chapterSlice.actions;
+export const {} = chapterDetailSlice.actions;
 
-export default chapterSlice.reducer;
+export default chapterDetailSlice.reducer;

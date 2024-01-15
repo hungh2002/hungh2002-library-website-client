@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 import { fetchBook } from './../../redux/reducer/bookSlice';
 import { axiosPost } from './../../service/axios-api';
-import './../../scss/add-new-chapter.scss';
+import './../../scss/chapter/add-new-chapter.scss';
 
 const AddNewChapter = () => {
   const book = useSelector((state) => state.book.value);

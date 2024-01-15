@@ -3,8 +3,8 @@ import { axiosGetWithParams } from './../../service/axios-api';
 
 export const fetchChapter = createAsyncThunk(
   'chapter/fetchChapter',
-  async (bookId) => {
-    const response = await axiosGetWithParams('/chapter', { bookId: bookId });
+  async (params) => {
+    const response = await axiosGetWithParams('/chapter', params);
     return response.data;
   }
 );

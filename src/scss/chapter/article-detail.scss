@@ -1,0 +1,17 @@
+.article-detail {
+  overflow-y: auto;
+
+  .list-chapter {
+    padding: 0%;
+    width: 100%;
+    height: 30%;
+    border: 0.2em solid;
+
+    list-style-position: inside;
+    list-style-type: none;
+
+    li {
+      border-bottom: 0.1em solid;
+    }
+  }
+}

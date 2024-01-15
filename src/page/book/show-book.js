@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import './../../scss/show-book.scss';
+import './../../scss/book/show-book.scss';
 import { fetchBook } from './../../redux/reducer/bookSlice';
+import { baseURL } from './../../service/axios-api';
 
 const ShowBook = () => {
   const book = useSelector((state) => state.book.value);
@@ -17,8 +18,10 @@ const ShowBook = () => {
     return book.map((element) => {
       return (
         <Link to={`article-detail/${element.bookId}`} key={element.bookId}>
-          <div>{element.thumbnail}</div>
-          <div>{element.title}</div>
+          <figure>
+            <img src={`${baseURL}/${element.thumbnail}`} alt={element.title} />
+            <figcaption>{element.title}</figcaption>
+          </figure>
         </Link>
       );
     });

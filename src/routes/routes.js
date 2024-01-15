@@ -26,12 +26,10 @@ const router = createBrowserRouter([
       {
         path: 'article-detail/:bookId',
         element: <ArticleDetail />,
-        children: [
-          {
-            path: 'chapter/:chapterIndexId',
-            element: <ShowChapter />,
-          },
-        ],
+      },
+      {
+        path: 'article-detail/:bookId/chapter/:chapterIndexId',
+        element: <ShowChapter />,
       },
       {
         path: 'add-new-chapter',
